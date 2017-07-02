@@ -1,0 +1,9 @@
+<h1><{{ post.post_text }}</h1>
+
+<ul>
+{% for reply in post.reply_set.all %}
+	<li>{{ reply.reply_text }} -- {{ reply.votes_for_reply }} reply{{ reply.votes_for_reply|pluralize }}</li>
+{% endfor %}		
+</ul>
+
+<a href="{% url 'forum:detail' post.id %}">Vote for the reply again?</a>
